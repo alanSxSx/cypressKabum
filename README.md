@@ -25,4 +25,8 @@ cypress/fixtures/user.json
 
 Caso queira trocar para sua conta, basta colocar seu cpf e a senha.
 
+🎥 Demonstração em vídeo:
+
+https://github.com/user-attachments/assets/f0525e7e-fd01-401d-b4a0-4d2deb42df69
+
 
