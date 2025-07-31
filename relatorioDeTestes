@@ -1,0 +1,23 @@
+1. ❌ Erros de JavaScript não relacionados aos testes
+
+Durante a execução dos testes automatizados com Cypress no site da Kabum, foram detectados erros de JavaScript não controláveis vindos diretamente da aplicação em produção. 
+Esses erros não estavam relacionados ao comportamento que os testes verificam, mas causavam falhas inesperadas na suíte de testes.
+Para contornar esse problema, foi necessário adicionar o seguinte código no e2e.js (ou em support/e2e.js), instruindo o Cypress a ignorar exceções não tratadas da aplicação testada:
+
+Cypress.on('uncaught:exception', (err, runnable) => {
+  return false;
+});
+
+🔎 Isso permite que o teste continue normalmente, sem ser interrompido por falhas do frontend da Kabum que não afetam o que está sendo validado (ex: login bem-sucedido).
+
+2. ⏳ Necessidade de cy.wait
+
+Durante o processo de login, o redirecionamento e carregamento da página inicial após autenticação demoram alguns segundos. 
+O Cypress, por padrão, pode tentar buscar o elemento de saudação ("Olá,") antes de ele realmente aparecer na DOM.
+
+3. 🔐 Credenciais de Login
+
+Foi criada uma conta fictícia exclusivamente para fins de teste. Não consideramos a autenticação em dois fatores nem outras possíveis inconsistências do site durante a automação.
+
+
+
